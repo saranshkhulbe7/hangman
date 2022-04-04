@@ -1,0 +1,163 @@
+@import "./../settings/variables.scss";
+$lives: 0;
+.pole {
+  position: relative;
+  height: 35rem;
+  width: 13rem;
+  top: 4rem;
+  left: -10rem;
+  border-left: 10px solid $pink-dark;
+  border-top: 10px solid $pink-dark;
+  border-radius: 5px;
+  z-index: -1;
+
+  &::before {
+    content: "";
+    padding: 0.35rem;
+    height: 100%;
+    width: 100%;
+    background: $pink-dark;
+    position: relative;
+    left: 12.3rem;
+    border-radius: 8px;
+  }
+}
+.hangman-container {
+  position: relative;
+  height: 100vh;
+  margin-left: 20rem;
+}
+
+.hangman {
+  right: 0.5rem;
+  position: relative;
+  top: -29.5rem;
+  &__element {
+    opacity: 0.25;
+    &:nth-child(1) {
+      height: 6.23rem;
+      width: 6.23rem;
+      border-radius: 50%;
+      border: 10px solid white;
+      z-index: -1;
+    }
+    &:not(:first-child) {
+      height: 6rem;
+      width: 10px;
+      background: white;
+      z-index: -1;
+      border-radius: 8px;
+    }
+    &:nth-child(2) {
+      position: absolute;
+      height: 19rem;
+      left: 3.5rem;
+    }
+    &:nth-child(3) {
+      position: absolute;
+      transform: rotate(45deg);
+      top: 9.5rem;
+      left: 1.4rem;
+    }
+    &:nth-child(4) {
+      position: absolute;
+      transform: rotate(-45deg);
+      top: 9.5rem;
+      left: 5.5rem;
+    }
+
+    &:nth-child(5) {
+      position: absolute;
+      transform: rotate(45deg);
+      top: 25rem;
+      left: 1.4rem;
+    }
+    &:nth-child(6) {
+      position: absolute;
+      transform: rotate(-45deg);
+      top: 25rem;
+      left: 5.5rem;
+    }
+  }
+}
+
+@for $i from 1 through 6 {
+  .hangman-#{$i} {
+    @for $j from 1 through $i {
+      .hangman__element:nth-child(#{$j}) {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.deadhangman {
+  right: 0.5rem;
+  animation: hangman-dead 4s ease-in-out infinite;
+  position: relative;
+  top: -29.5rem;
+  &__element {
+    &:nth-child(1) {
+      height: 6.23rem;
+      width: 6.23rem;
+      border-radius: 50%;
+      border: 10px solid white;
+      z-index: -1;
+    }
+    &:not(:first-child) {
+      height: 6rem;
+      width: 10px;
+      background: white;
+      z-index: -1;
+      border-radius: 8px;
+    }
+    &:nth-child(2) {
+      position: absolute;
+      height: 19rem;
+      left: 3.5rem;
+    }
+    &:nth-child(3) {
+      position: absolute;
+      transform: rotate(45deg);
+      top: 9.5rem;
+      left: 1.4rem;
+    }
+    &:nth-child(4) {
+      position: absolute;
+      transform: rotate(-45deg);
+      top: 9.5rem;
+      left: 5.5rem;
+    }
+
+    &:nth-child(5) {
+      position: absolute;
+      transform: rotate(45deg);
+      top: 25rem;
+      left: 1.4rem;
+    }
+    &:nth-child(6) {
+      position: absolute;
+      transform: rotate(-45deg);
+      top: 25rem;
+      left: 5.5rem;
+    }
+  }
+}
+
+@keyframes hangman-dead {
+  0% {
+    transform: rotate(0deg) translate(0, 3rem);
+  }
+  20% {
+    transform: rotate(-30deg) translate(5rem, 3rem);
+  }
+  40% {
+    transform: rotate(30deg) translate(-5rem, 3rem);
+  }
+  80% {
+    transform: rotate(-30deg) translate(5rem, 3rem);
+  }
+  100% {
+    transform: rotate(0) translate(0, 3rem);
+  }
+}
