@@ -1,8 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Game from "./components/game/Game";
 import "./styles/main.scss";
 
+import Game from "./components/game/Game";
+import React from "react";
+import ReactDOM from "react-dom";
+// Test
 const App = () => {
   return (
     <>
