@@ -4,11 +4,7 @@ import Game from "./components/game/Game";
 import React from "react";
 import ReactDOM from "react-dom";
 
-// Test
-
-// Test 2
-
-// Test 3
+// All set to go
 const App = () => {
   return (
     <>
